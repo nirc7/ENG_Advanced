@@ -11,12 +11,12 @@ namespace XElement_XAttribute
         static void Main(string[] args)
         {
             //WriteXmlFile();
-
+           
             //PrintPersons();
 
             //PrintStudents();
 
-            //ChangeStudents();
+            ChangeStudents();
 
             Console.ReadLine();
         }
@@ -137,7 +137,7 @@ namespace XElement_XAttribute
             persons.Save("Perons.xml");
 
             XDocument studentsDocument = persons;
-            IEnumerable<XElement> students = studentsDocument.Elements();
+            IEnumerable<XElement> students = studentsDocument.Elements();//get the ROOT
             int gr = 70;
             foreach (var student in students.Elements())
             {

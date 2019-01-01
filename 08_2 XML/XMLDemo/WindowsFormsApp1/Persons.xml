@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Persons>
+  <Person id="1">
+    <name>avi</name>
+    <grade>100</grade>
+  </Person>
+
+  <Person id="2">
+    <name>benny</name>
+    <grade>98</grade>
+  </Person>
+
+  <Person id="3">
+    <name>charlie</name>
+    <grade>99</grade>
+  </Person>
+</Persons>
