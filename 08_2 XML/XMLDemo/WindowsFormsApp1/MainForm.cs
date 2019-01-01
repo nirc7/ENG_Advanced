@@ -13,11 +13,15 @@ namespace WindowsFormsApp1
     public partial class MainForm : Form
     {
         private LoginForm loginForm;
+        private string userName;
 
-        public MainForm(LoginForm loginForm)
+        public MainForm(LoginForm loginForm, string userName)
         {
             InitializeComponent();
             this.loginForm = loginForm;
+            this.userName = userName;
+            
+            label1.Text = "WELCOME "+ userName +" - " + this.loginForm.TxtPass + " TO OUR APP!!!";
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)

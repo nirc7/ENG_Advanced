@@ -21,7 +21,7 @@ namespace WindowsFormsApp1
         {
             if (txtName.Text =="avi" && txtPass.Text=="123")
             {
-                MainForm mainFrm = new MainForm(this);
+                MainForm mainFrm = new MainForm(this, txtName.Text);
                 //mainFrm.Show();
                 Hide();
                 mainFrm.ShowDialog();
@@ -30,6 +30,11 @@ namespace WindowsFormsApp1
             {
                 MessageBox.Show("LOGIN FAILED!");
             }
+        }
+
+        public string TxtPass
+        {
+            get { return txtPass.Text; }
         }
     }
 }
