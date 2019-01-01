@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<students>
+  <student>
+    <name>nir</name>
+    <familyName>chen</familyName>
+    <grade course="math">90</grade>
+    <grade course="biology">80</grade>
+    <hight>1.80</hight>
+  </student>
+
+  <student>
+    <name>chipopo</name>
+    <familyName>kunilemel</familyName>
+    <grade course="math">95</grade>
+    <grade course="biology">70</grade>
+    <hight>1.90</hight>
+    <!--a comment this will not be parsed through the C# code-->
+    <stamElement>STAMMMM</stamElement>
+    asdasd
+  </student>
+
+  <student>
+    <name>sara</name>
+    <familyName>flaka</familyName>
+    <grade course="math">100</grade>
+    <grade course="biology">85</grade>
+    <hight>1.70</hight>
+  </student>
+  
+</students>
