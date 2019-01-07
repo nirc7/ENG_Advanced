@@ -34,7 +34,7 @@ namespace WindowsFormsApp1
 
         private void button3_Click(object sender, EventArgs e)
         {
-            ExcNonQ("DELETE UsersTB WHERE Id=6 ");
+            ExcNonQ("DELETE UsersTB WHERE Id=" + txtID.Text);
         }
 
         private void ExcNonQ(string commndStr)
