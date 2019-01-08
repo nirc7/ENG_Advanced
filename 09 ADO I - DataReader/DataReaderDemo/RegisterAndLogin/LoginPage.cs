@@ -43,6 +43,7 @@ namespace RegisterAndLogin
             {
                 lblErr.Text = "does not exists!!!";
             }
+            reader.Close();
             comm.Connection.Close();
 
         }

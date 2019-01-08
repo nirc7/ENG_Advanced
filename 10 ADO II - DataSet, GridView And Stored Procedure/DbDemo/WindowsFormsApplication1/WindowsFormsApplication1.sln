@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30501.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsApplication1", "WindowsFormsApplication1\WindowsFormsApplication1.csproj", "{30C82765-9508-4EED-B456-00DC6E790B99}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataSetProj", "DataSetProj\DataSetProj.csproj", "{C120014B-C5D4-4476-9662-30A80F32E279}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{30C82765-9508-4EED-B456-00DC6E790B99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30C82765-9508-4EED-B456-00DC6E790B99}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30C82765-9508-4EED-B456-00DC6E790B99}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30C82765-9508-4EED-B456-00DC6E790B99}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C120014B-C5D4-4476-9662-30A80F32E279}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C120014B-C5D4-4476-9662-30A80F32E279}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C120014B-C5D4-4476-9662-30A80F32E279}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C120014B-C5D4-4476-9662-30A80F32E279}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

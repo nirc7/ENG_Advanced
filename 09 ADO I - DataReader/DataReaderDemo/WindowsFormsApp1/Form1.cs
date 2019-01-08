@@ -67,6 +67,7 @@ namespace WindowsFormsApp1
                 outputStr += reader[0] + ", " + reader["Name"] + ", " + reader["Family"] + "\r\n";
             }
 
+            reader.Close();
             com.Connection.Close();
 
             lblRes.Text = outputStr;

@@ -35,6 +35,7 @@ namespace RegisterAndLogin
                 lblErr.Text = "already exists!!!";
                 IsAlreadyExists = true;
             }
+            reader.Close();
             comm.Connection.Close();
 
             if (!IsAlreadyExists)
