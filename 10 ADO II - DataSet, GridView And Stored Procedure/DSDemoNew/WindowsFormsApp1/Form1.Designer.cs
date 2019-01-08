@@ -35,6 +35,12 @@
             this.btnRefreshDS = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.cbk7 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.txtId = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btnSelectByID = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnSelect
@@ -106,11 +112,58 @@
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.cbk7});
+            this.dataGridView1.Location = new System.Drawing.Point(400, 200);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(297, 150);
+            this.dataGridView1.TabIndex = 7;
+            this.dataGridView1.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellEndEdit);
+            // 
+            // cbk7
+            // 
+            this.cbk7.HeaderText = "CKB7";
+            this.cbk7.Name = "cbk7";
+            // 
+            // txtId
+            // 
+            this.txtId.Location = new System.Drawing.Point(911, 153);
+            this.txtId.Name = "txtId";
+            this.txtId.Size = new System.Drawing.Size(100, 20);
+            this.txtId.TabIndex = 8;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(843, 156);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(21, 13);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "ID:";
+            // 
+            // btnSelectByID
+            // 
+            this.btnSelectByID.Location = new System.Drawing.Point(911, 105);
+            this.btnSelectByID.Name = "btnSelectByID";
+            this.btnSelectByID.Size = new System.Drawing.Size(126, 23);
+            this.btnSelectByID.TabIndex = 10;
+            this.btnSelectByID.Text = "Select By ID";
+            this.btnSelectByID.UseVisualStyleBackColor = true;
+            this.btnSelectByID.Click += new System.EventHandler(this.btnSelectByID_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1171, 450);
+            this.Controls.Add(this.btnSelectByID);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.txtId);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.btnRefreshDS);
@@ -121,6 +174,7 @@
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -135,6 +189,11 @@
         private System.Windows.Forms.Button btnRefreshDS;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn cbk7;
+        private System.Windows.Forms.TextBox txtId;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnSelectByID;
     }
 }
 

@@ -41,6 +41,8 @@ namespace WindowsFormsApp1
                     label1.Text += row[0] + ", " + row["Name"] + ", " + row["Family"] + "\r\n";
                 }                
             }
+
+            dataGridView1.DataSource = table1;
         }
 
         private void btnInsert_Click(object sender, EventArgs e)
@@ -70,6 +72,11 @@ namespace WindowsFormsApp1
         }
 
         private void btnUpdate2DB_Click(object sender, EventArgs e)
+        {
+            UpdateDBFromDS();
+        }
+
+        private void UpdateDBFromDS()
         {
             new SqlCommandBuilder(adptr);
 
@@ -104,6 +111,30 @@ namespace WindowsFormsApp1
                     table1.Rows[i].Delete();
                 }
             }            
+        }
+
+        private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            UpdateDBFromDS();
+        }
+
+        private void btnSelectByID_Click(object sender, EventArgs e)
+        {
+            SqlDataAdapter adptr2 = new SqlDataAdapter("SELECT * FROM UsersTB WHERE ID=@parName1",con);
+
+            SqlParameter par1 = new SqlParameter("parName1",SqlDbType.Int);
+            par1.Value = txtId.Text;
+
+            adptr2.SelectCommand.Parameters.Add(par1);
+
+            if (ds.Tables["T2"] != null)
+            {
+                ds.Tables["T2"].Clear();
+            }
+            
+            adptr2.Fill(ds, "T2");
+
+            dataGridView1.DataSource = ds.Tables["T2"];
         }
     }
 }
