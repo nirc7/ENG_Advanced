@@ -123,7 +123,7 @@ namespace Stored_Procedure
         {
             //DataSet tblEmployees = new DataSet();
 
-            myCon.Open();
+            //myCon.Open();
             SqlCommand MySPCommand = new SqlCommand("SearchUserTable", myCon);
             MySPCommand.CommandType = CommandType.StoredProcedure;
             SqlParameter parID = new SqlParameter("@MyID", SqlDbType.Int);
@@ -134,7 +134,7 @@ namespace Stored_Procedure
             adpt1 = new SqlDataAdapter(MySPCommand);
             ds1.Clear();
             adpt1.Fill(ds1, "T2");
-            myCon.Close();
+            //myCon.Close();
             DataGridView1.DataSource = ds1.Tables["T2"];
             
         }
