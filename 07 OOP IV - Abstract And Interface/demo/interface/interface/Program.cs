@@ -6,6 +6,11 @@ using System.Collections;
 
 namespace @interface
 {
+
+    public interface IMovable {
+        int Move();
+    }
+
     class Program
     {
         static void Main(string[] args)
@@ -32,6 +37,41 @@ namespace @interface
             IComparable ic = new Person(33, "asdasd");
             Func(ic);
             Func(arrPerson[0]);
+
+            Car[] cars = new Car[] {
+                new Car(){LicensePlate=2,Model="BMW" },
+                new Car(){LicensePlate=1,Model="KIA" },
+            };
+
+            foreach (var   car in cars)
+            {
+                Console.WriteLine(car.Model + ", " + car.LicensePlate);
+            }
+            Array.Sort(cars);
+            Console.WriteLine();
+            foreach (var car in cars)
+            {
+                Console.WriteLine(car.Model + ", " + car.LicensePlate);
+            }
+
+
+            Car c = new Car();
+
+            IMovable[] ims = new IMovable[] {
+                new Car(){LicensePlate=2,Model="BMW" },
+                new Car(){LicensePlate=1,Model="KIA" },
+                new Person(7,"avi"),
+                new Person(2, "gil"),                
+                c
+            };
+
+            Console.WriteLine();
+            foreach (var imov in ims)
+            {
+                Console.WriteLine( imov.Move());
+            }
+
+
         }
 
         private static void Func(IComparable ic)
@@ -67,7 +107,7 @@ namespace @interface
         }
     }
 
-    class Person : IComparable
+    class Person : IComparable, IMovable
     {
         public static bool SortById = true;
         public int ID { get; set; }
@@ -111,6 +151,32 @@ namespace @interface
             return 777; //not reachable code!
 
 
+        }
+
+        public int Move()
+        {
+            return new Random(ID).Next(3, 7);
+        }
+    }
+
+    class Car : IComparable, IMovable
+    {
+        public string Model { get; set; }
+        public int LicensePlate { get; set; }
+
+        public int CompareTo(object obj)
+        {
+            return LicensePlate.CompareTo(((Car)obj).LicensePlate);
+        }
+
+        public override int GetHashCode()
+        {
+            return LicensePlate;
+        }
+
+        public int Move()
+        {
+            return new Random(LicensePlate).Next(150,250);
         }
     }
 }
