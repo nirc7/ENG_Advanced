@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2026
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimedQueueProj", "TimedQueueProj\TimedQueueProj.csproj", "{82559813-E3FA-4D80-AA46-EE0AF8D4100D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{82559813-E3FA-4D80-AA46-EE0AF8D4100D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82559813-E3FA-4D80-AA46-EE0AF8D4100D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82559813-E3FA-4D80-AA46-EE0AF8D4100D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82559813-E3FA-4D80-AA46-EE0AF8D4100D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4C5E0A9A-D8B0-4D81-8E0C-696563C28636}
+	EndGlobalSection
+EndGlobal
