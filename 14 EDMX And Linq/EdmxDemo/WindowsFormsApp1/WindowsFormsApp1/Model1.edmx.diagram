@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="396cce48cdba4207bf153f1d0b8f5cc5" Name="Diagram1">
+        <EntityTypeShape EntityType="VIDEOLIBPROJECTV01Model.Actor" Width="1.5" PointX="3" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="VIDEOLIBPROJECTV01Model.Country" Width="1.5" PointX="0.75" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="VIDEOLIBPROJECTV01Model.Member" Width="1.5" PointX="5.25" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="VIDEOLIBPROJECTV01Model.Movie" Width="1.5" PointX="5.25" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="VIDEOLIBPROJECTV01Model.MovieType" Width="1.5" PointX="3" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="VIDEOLIBPROJECTV01Model.Rent" Width="1.5" PointX="7.5" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="VIDEOLIBPROJECTV01Model.Review" Width="1.5" PointX="10.5" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="VIDEOLIBPROJECTV01Model.WaitingList" Width="1.5" PointX="7.5" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="VIDEOLIBPROJECTV01Model.popular" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
+        <AssociationConnector Association="VIDEOLIBPROJECTV01Model.FK_Actor_Country" ManuallyRouted="false" />
+        <AssociationConnector Association="VIDEOLIBPROJECTV01Model.FK_Movie_Country" ManuallyRouted="false" />
+        <AssociationConnector Association="VIDEOLIBPROJECTV01Model.FK_Rent_Member" ManuallyRouted="false" />
+        <AssociationConnector Association="VIDEOLIBPROJECTV01Model.FK_Review_Member" ManuallyRouted="false" />
+        <AssociationConnector Association="VIDEOLIBPROJECTV01Model.FK_WaitingList_Member" ManuallyRouted="false" />
+        <AssociationConnector Association="VIDEOLIBPROJECTV01Model.FK_Movie_MovieType" ManuallyRouted="false" />
+        <AssociationConnector Association="VIDEOLIBPROJECTV01Model.FK_Rent_Movie" ManuallyRouted="false" />
+        <AssociationConnector Association="VIDEOLIBPROJECTV01Model.FK_Review_Movie" ManuallyRouted="false" />
+        <AssociationConnector Association="VIDEOLIBPROJECTV01Model.FK_WaitingList_Movie" ManuallyRouted="false" />
+        <AssociationConnector Association="VIDEOLIBPROJECTV01Model.ActorMovie" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

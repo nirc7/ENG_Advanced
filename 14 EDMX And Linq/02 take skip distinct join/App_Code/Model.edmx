@@ -1,0 +1,799 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="VideoLibProjectV01Model.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="VideoLibProjectV01ModelStoreContainer">
+          <EntitySet Name="Actor" EntityType="VideoLibProjectV01Model.Store.Actor" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ActorMovie" EntityType="VideoLibProjectV01Model.Store.ActorMovie" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Country" EntityType="VideoLibProjectV01Model.Store.Country" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Member" EntityType="VideoLibProjectV01Model.Store.Member" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Movie" EntityType="VideoLibProjectV01Model.Store.Movie" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="MovieType" EntityType="VideoLibProjectV01Model.Store.MovieType" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="popular" EntityType="VideoLibProjectV01Model.Store.popular" store:Type="Tables" store:Schema="dbo" store:Name="popular">
+            <DefiningQuery>SELECT 
+      [popular].[MovieID] AS [MovieID], 
+      [popular].[movieCount] AS [movieCount]
+      FROM [dbo].[popular] AS [popular]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Rent" EntityType="VideoLibProjectV01Model.Store.Rent" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Review" EntityType="VideoLibProjectV01Model.Store.Review" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="sysdiagrams" EntityType="VideoLibProjectV01Model.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="WaitingList" EntityType="VideoLibProjectV01Model.Store.WaitingList" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Actor_Country" Association="VideoLibProjectV01Model.Store.FK_Actor_Country">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="Actor" EntitySet="Actor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ActorMovie_Actor" Association="VideoLibProjectV01Model.Store.FK_ActorMovie_Actor">
+            <End Role="Actor" EntitySet="Actor" />
+            <End Role="ActorMovie" EntitySet="ActorMovie" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ActorMovie_Movie" Association="VideoLibProjectV01Model.Store.FK_ActorMovie_Movie">
+            <End Role="Movie" EntitySet="Movie" />
+            <End Role="ActorMovie" EntitySet="ActorMovie" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Movie_Country" Association="VideoLibProjectV01Model.Store.FK_Movie_Country">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="Movie" EntitySet="Movie" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Movie_MovieType" Association="VideoLibProjectV01Model.Store.FK_Movie_MovieType">
+            <End Role="MovieType" EntitySet="MovieType" />
+            <End Role="Movie" EntitySet="Movie" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rent_Member" Association="VideoLibProjectV01Model.Store.FK_Rent_Member">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="Rent" EntitySet="Rent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rent_Movie" Association="VideoLibProjectV01Model.Store.FK_Rent_Movie">
+            <End Role="Movie" EntitySet="Movie" />
+            <End Role="Rent" EntitySet="Rent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Review_Member" Association="VideoLibProjectV01Model.Store.FK_Review_Member">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="Review" EntitySet="Review" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Review_Movie" Association="VideoLibProjectV01Model.Store.FK_Review_Movie">
+            <End Role="Movie" EntitySet="Movie" />
+            <End Role="Review" EntitySet="Review" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WaitingList_Member" Association="VideoLibProjectV01Model.Store.FK_WaitingList_Member">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="WaitingList" EntitySet="WaitingList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WaitingList_Movie" Association="VideoLibProjectV01Model.Store.FK_WaitingList_Movie">
+            <End Role="Movie" EntitySet="Movie" />
+            <End Role="WaitingList" EntitySet="WaitingList" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Actor">
+          <Key>
+            <PropertyRef Name="ActorID" />
+          </Key>
+          <Property Name="ActorID" Type="int" Nullable="false" />
+          <Property Name="ActorName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="BirthDate" Type="date" Nullable="false" />
+          <Property Name="CountryID" Type="smallint" />
+        </EntityType>
+        <EntityType Name="ActorMovie">
+          <Key>
+            <PropertyRef Name="ActorID" />
+            <PropertyRef Name="MovieID" />
+          </Key>
+          <Property Name="ActorID" Type="int" Nullable="false" />
+          <Property Name="MovieID" Type="nchar" Nullable="false" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="CountryID" />
+          </Key>
+          <Property Name="CountryID" Type="smallint" Nullable="false" />
+          <Property Name="CountryName" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Member">
+          <Key>
+            <PropertyRef Name="MemberID" />
+          </Key>
+          <Property Name="MemberID" Type="int" Nullable="false" />
+          <Property Name="MemberLevel" Type="tinyint" Nullable="false" />
+          <Property Name="FirstName" Type="nchar" Nullable="false" MaxLength="30" />
+          <Property Name="LastName" Type="nchar" Nullable="false" MaxLength="30" />
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="BirthDate" Type="date" />
+          <Property Name="Street" Type="nvarchar" MaxLength="50" />
+          <Property Name="City" Type="nchar" MaxLength="30" />
+          <Property Name="HouseNumber" Type="smallint" />
+          <Property Name="HomePhone" Type="int" />
+          <Property Name="MobilePhone" Type="int" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Password" Type="nchar" Nullable="false" MaxLength="20" />
+          <Property Name="DaysBalance" Type="smallint" Nullable="false" />
+          <Property Name="MemberSince" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Movie">
+          <Key>
+            <PropertyRef Name="MovieID" />
+          </Key>
+          <Property Name="MovieID" Type="nchar" Nullable="false" MaxLength="10" />
+          <Property Name="MovieName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="MovieTypeID" Type="smallint" Nullable="false" />
+          <Property Name="Copies" Type="smallint" Nullable="false" />
+          <Property Name="Summary" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Year" Type="smallint" Nullable="false" />
+          <Property Name="Lenght" Type="smallint" Nullable="false" />
+          <Property Name="CountryID" Type="smallint" Nullable="false" />
+          <Property Name="MoviePicUrl" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="TrailerUrl" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Active" Type="tinyint" Nullable="false" />
+          <Property Name="DateAdded" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MovieType">
+          <Key>
+            <PropertyRef Name="MovieTypeID" />
+          </Key>
+          <Property Name="MovieTypeID" Type="smallint" Nullable="false" />
+          <Property Name="MovieTypeName" Type="nchar" Nullable="false" MaxLength="20" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'C:\לימודים\HI-TECH\MY_MCPD\07 MY_4270\09\01 DATASOURCE AND GRIDVIEW\APP_DATA\VIDEOLIBPROJECTV01.MDF.dbo.popular' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="popular">
+          <Key>
+            <PropertyRef Name="MovieID" />
+          </Key>
+          <Property Name="MovieID" Type="nchar" Nullable="false" MaxLength="10" />
+          <Property Name="movieCount" Type="int" />
+        </EntityType>
+        <EntityType Name="Rent">
+          <Key>
+            <PropertyRef Name="MemberID" />
+            <PropertyRef Name="MovieID" />
+            <PropertyRef Name="RentStart" />
+          </Key>
+          <Property Name="MemberID" Type="int" Nullable="false" />
+          <Property Name="MovieID" Type="nchar" Nullable="false" MaxLength="10" />
+          <Property Name="RentStart" Type="date" Nullable="false" />
+          <Property Name="RentEnd" Type="date" />
+          <Property Name="RentDays" Type="int" />
+        </EntityType>
+        <EntityType Name="Review">
+          <Key>
+            <PropertyRef Name="MemberID" />
+            <PropertyRef Name="MovieID" />
+          </Key>
+          <Property Name="MemberID" Type="int" Nullable="false" />
+          <Property Name="MovieID" Type="nchar" Nullable="false" MaxLength="10" />
+          <Property Name="ReviewText" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Rate" Type="tinyint" Nullable="false" />
+          <Property Name="ReviewDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="WaitingList">
+          <Key>
+            <PropertyRef Name="MemberID" />
+            <PropertyRef Name="MovieID" />
+          </Key>
+          <Property Name="MemberID" Type="int" Nullable="false" />
+          <Property Name="MovieID" Type="nchar" Nullable="false" MaxLength="10" />
+          <Property Name="WaitDate" Type="date" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Actor_Country">
+          <End Role="Country" Type="VideoLibProjectV01Model.Store.Country" Multiplicity="0..1" />
+          <End Role="Actor" Type="VideoLibProjectV01Model.Store.Actor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="CountryID" />
+            </Principal>
+            <Dependent Role="Actor">
+              <PropertyRef Name="CountryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ActorMovie_Actor">
+          <End Role="Actor" Type="VideoLibProjectV01Model.Store.Actor" Multiplicity="1" />
+          <End Role="ActorMovie" Type="VideoLibProjectV01Model.Store.ActorMovie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Actor">
+              <PropertyRef Name="ActorID" />
+            </Principal>
+            <Dependent Role="ActorMovie">
+              <PropertyRef Name="ActorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ActorMovie_Movie">
+          <End Role="Movie" Type="VideoLibProjectV01Model.Store.Movie" Multiplicity="1" />
+          <End Role="ActorMovie" Type="VideoLibProjectV01Model.Store.ActorMovie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Movie">
+              <PropertyRef Name="MovieID" />
+            </Principal>
+            <Dependent Role="ActorMovie">
+              <PropertyRef Name="MovieID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Movie_Country">
+          <End Role="Country" Type="VideoLibProjectV01Model.Store.Country" Multiplicity="1" />
+          <End Role="Movie" Type="VideoLibProjectV01Model.Store.Movie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="CountryID" />
+            </Principal>
+            <Dependent Role="Movie">
+              <PropertyRef Name="CountryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Movie_MovieType">
+          <End Role="MovieType" Type="VideoLibProjectV01Model.Store.MovieType" Multiplicity="1" />
+          <End Role="Movie" Type="VideoLibProjectV01Model.Store.Movie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MovieType">
+              <PropertyRef Name="MovieTypeID" />
+            </Principal>
+            <Dependent Role="Movie">
+              <PropertyRef Name="MovieTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rent_Member">
+          <End Role="Member" Type="VideoLibProjectV01Model.Store.Member" Multiplicity="1" />
+          <End Role="Rent" Type="VideoLibProjectV01Model.Store.Rent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="MemberID" />
+            </Principal>
+            <Dependent Role="Rent">
+              <PropertyRef Name="MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rent_Movie">
+          <End Role="Movie" Type="VideoLibProjectV01Model.Store.Movie" Multiplicity="1" />
+          <End Role="Rent" Type="VideoLibProjectV01Model.Store.Rent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Movie">
+              <PropertyRef Name="MovieID" />
+            </Principal>
+            <Dependent Role="Rent">
+              <PropertyRef Name="MovieID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Review_Member">
+          <End Role="Member" Type="VideoLibProjectV01Model.Store.Member" Multiplicity="1" />
+          <End Role="Review" Type="VideoLibProjectV01Model.Store.Review" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="MemberID" />
+            </Principal>
+            <Dependent Role="Review">
+              <PropertyRef Name="MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Review_Movie">
+          <End Role="Movie" Type="VideoLibProjectV01Model.Store.Movie" Multiplicity="1" />
+          <End Role="Review" Type="VideoLibProjectV01Model.Store.Review" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Movie">
+              <PropertyRef Name="MovieID" />
+            </Principal>
+            <Dependent Role="Review">
+              <PropertyRef Name="MovieID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WaitingList_Member">
+          <End Role="Member" Type="VideoLibProjectV01Model.Store.Member" Multiplicity="1" />
+          <End Role="WaitingList" Type="VideoLibProjectV01Model.Store.WaitingList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="MemberID" />
+            </Principal>
+            <Dependent Role="WaitingList">
+              <PropertyRef Name="MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WaitingList_Movie">
+          <End Role="Movie" Type="VideoLibProjectV01Model.Store.Movie" Multiplicity="1" />
+          <End Role="WaitingList" Type="VideoLibProjectV01Model.Store.WaitingList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Movie">
+              <PropertyRef Name="MovieID" />
+            </Principal>
+            <Dependent Role="WaitingList">
+              <PropertyRef Name="MovieID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="VideoLibProjectV01Model" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="VideoLibProjectV01Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Actors" EntityType="VideoLibProjectV01Model.Actor" />
+          <EntitySet Name="Countries" EntityType="VideoLibProjectV01Model.Country" />
+          <EntitySet Name="Members" EntityType="VideoLibProjectV01Model.Member" />
+          <EntitySet Name="Movies" EntityType="VideoLibProjectV01Model.Movie" />
+          <EntitySet Name="MovieTypes" EntityType="VideoLibProjectV01Model.MovieType" />
+          <EntitySet Name="populars" EntityType="VideoLibProjectV01Model.popular" />
+          <EntitySet Name="Rents" EntityType="VideoLibProjectV01Model.Rent" />
+          <EntitySet Name="Reviews" EntityType="VideoLibProjectV01Model.Review" />
+          <EntitySet Name="sysdiagrams" EntityType="VideoLibProjectV01Model.sysdiagram" />
+          <EntitySet Name="WaitingLists" EntityType="VideoLibProjectV01Model.WaitingList" />
+          <AssociationSet Name="FK_Actor_Country" Association="VideoLibProjectV01Model.FK_Actor_Country">
+            <End Role="Country" EntitySet="Countries" />
+            <End Role="Actor" EntitySet="Actors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Movie_Country" Association="VideoLibProjectV01Model.FK_Movie_Country">
+            <End Role="Country" EntitySet="Countries" />
+            <End Role="Movie" EntitySet="Movies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rent_Member" Association="VideoLibProjectV01Model.FK_Rent_Member">
+            <End Role="Member" EntitySet="Members" />
+            <End Role="Rent" EntitySet="Rents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Review_Member" Association="VideoLibProjectV01Model.FK_Review_Member">
+            <End Role="Member" EntitySet="Members" />
+            <End Role="Review" EntitySet="Reviews" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WaitingList_Member" Association="VideoLibProjectV01Model.FK_WaitingList_Member">
+            <End Role="Member" EntitySet="Members" />
+            <End Role="WaitingList" EntitySet="WaitingLists" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Movie_MovieType" Association="VideoLibProjectV01Model.FK_Movie_MovieType">
+            <End Role="MovieType" EntitySet="MovieTypes" />
+            <End Role="Movie" EntitySet="Movies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rent_Movie" Association="VideoLibProjectV01Model.FK_Rent_Movie">
+            <End Role="Movie" EntitySet="Movies" />
+            <End Role="Rent" EntitySet="Rents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Review_Movie" Association="VideoLibProjectV01Model.FK_Review_Movie">
+            <End Role="Movie" EntitySet="Movies" />
+            <End Role="Review" EntitySet="Reviews" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WaitingList_Movie" Association="VideoLibProjectV01Model.FK_WaitingList_Movie">
+            <End Role="Movie" EntitySet="Movies" />
+            <End Role="WaitingList" EntitySet="WaitingLists" />
+          </AssociationSet>
+          <AssociationSet Name="ActorMovie" Association="VideoLibProjectV01Model.ActorMovie">
+            <End Role="Actor" EntitySet="Actors" />
+            <End Role="Movie" EntitySet="Movies" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Actor">
+          <Key>
+            <PropertyRef Name="ActorID" />
+          </Key>
+          <Property Name="ActorID" Type="Int32" Nullable="false" />
+          <Property Name="ActorName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="BirthDate" Type="DateTime" Nullable="false" />
+          <Property Name="CountryID" Type="Int16" />
+          <NavigationProperty Name="Country" Relationship="VideoLibProjectV01Model.FK_Actor_Country" FromRole="Actor" ToRole="Country" />
+          <NavigationProperty Name="Movies" Relationship="VideoLibProjectV01Model.ActorMovie" FromRole="Actor" ToRole="Movie" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="CountryID" />
+          </Key>
+          <Property Name="CountryID" Type="Int16" Nullable="false" />
+          <Property Name="CountryName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Actors" Relationship="VideoLibProjectV01Model.FK_Actor_Country" FromRole="Country" ToRole="Actor" />
+          <NavigationProperty Name="Movies" Relationship="VideoLibProjectV01Model.FK_Movie_Country" FromRole="Country" ToRole="Movie" />
+        </EntityType>
+        <EntityType Name="Member">
+          <Key>
+            <PropertyRef Name="MemberID" />
+          </Key>
+          <Property Name="MemberID" Type="Int32" Nullable="false" />
+          <Property Name="MemberLevel" Type="Byte" Nullable="false" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="30" Unicode="true" FixedLength="true" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="30" Unicode="true" FixedLength="true" />
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="BirthDate" Type="DateTime" />
+          <Property Name="Street" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="City" Type="String" MaxLength="30" Unicode="true" FixedLength="true" />
+          <Property Name="HouseNumber" Type="Int16" />
+          <Property Name="HomePhone" Type="Int32" />
+          <Property Name="MobilePhone" Type="Int32" Nullable="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="true" />
+          <Property Name="DaysBalance" Type="Int16" Nullable="false" />
+          <Property Name="MemberSince" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="Rents" Relationship="VideoLibProjectV01Model.FK_Rent_Member" FromRole="Member" ToRole="Rent" />
+          <NavigationProperty Name="Reviews" Relationship="VideoLibProjectV01Model.FK_Review_Member" FromRole="Member" ToRole="Review" />
+          <NavigationProperty Name="WaitingLists" Relationship="VideoLibProjectV01Model.FK_WaitingList_Member" FromRole="Member" ToRole="WaitingList" />
+        </EntityType>
+        <EntityType Name="Movie">
+          <Key>
+            <PropertyRef Name="MovieID" />
+          </Key>
+          <Property Name="MovieID" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="MovieName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="MovieTypeID" Type="Int16" Nullable="false" />
+          <Property Name="Copies" Type="Int16" Nullable="false" />
+          <Property Name="Summary" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Year" Type="Int16" Nullable="false" />
+          <Property Name="Lenght" Type="Int16" Nullable="false" />
+          <Property Name="CountryID" Type="Int16" Nullable="false" />
+          <Property Name="MoviePicUrl" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="TrailerUrl" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Active" Type="Byte" Nullable="false" />
+          <Property Name="DateAdded" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="Country" Relationship="VideoLibProjectV01Model.FK_Movie_Country" FromRole="Movie" ToRole="Country" />
+          <NavigationProperty Name="MovieType" Relationship="VideoLibProjectV01Model.FK_Movie_MovieType" FromRole="Movie" ToRole="MovieType" />
+          <NavigationProperty Name="Rents" Relationship="VideoLibProjectV01Model.FK_Rent_Movie" FromRole="Movie" ToRole="Rent" />
+          <NavigationProperty Name="Reviews" Relationship="VideoLibProjectV01Model.FK_Review_Movie" FromRole="Movie" ToRole="Review" />
+          <NavigationProperty Name="WaitingLists" Relationship="VideoLibProjectV01Model.FK_WaitingList_Movie" FromRole="Movie" ToRole="WaitingList" />
+          <NavigationProperty Name="Actors" Relationship="VideoLibProjectV01Model.ActorMovie" FromRole="Movie" ToRole="Actor" />
+        </EntityType>
+        <EntityType Name="MovieType">
+          <Key>
+            <PropertyRef Name="MovieTypeID" />
+          </Key>
+          <Property Name="MovieTypeID" Type="Int16" Nullable="false" />
+          <Property Name="MovieTypeName" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="true" />
+          <NavigationProperty Name="Movies" Relationship="VideoLibProjectV01Model.FK_Movie_MovieType" FromRole="MovieType" ToRole="Movie" />
+        </EntityType>
+        <EntityType Name="popular">
+          <Key>
+            <PropertyRef Name="MovieID" />
+          </Key>
+          <Property Name="MovieID" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="movieCount" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Rent">
+          <Key>
+            <PropertyRef Name="MemberID" />
+            <PropertyRef Name="MovieID" />
+            <PropertyRef Name="RentStart" />
+          </Key>
+          <Property Name="MemberID" Type="Int32" Nullable="false" />
+          <Property Name="MovieID" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="RentStart" Type="DateTime" Nullable="false" />
+          <Property Name="RentEnd" Type="DateTime" />
+          <Property Name="RentDays" Type="Int32" />
+          <NavigationProperty Name="Member" Relationship="VideoLibProjectV01Model.FK_Rent_Member" FromRole="Rent" ToRole="Member" />
+          <NavigationProperty Name="Movie" Relationship="VideoLibProjectV01Model.FK_Rent_Movie" FromRole="Rent" ToRole="Movie" />
+        </EntityType>
+        <EntityType Name="Review">
+          <Key>
+            <PropertyRef Name="MemberID" />
+            <PropertyRef Name="MovieID" />
+          </Key>
+          <Property Name="MemberID" Type="Int32" Nullable="false" />
+          <Property Name="MovieID" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="ReviewText" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Rate" Type="Byte" Nullable="false" />
+          <Property Name="ReviewDate" Type="DateTime" />
+          <NavigationProperty Name="Member" Relationship="VideoLibProjectV01Model.FK_Review_Member" FromRole="Review" ToRole="Member" />
+          <NavigationProperty Name="Movie" Relationship="VideoLibProjectV01Model.FK_Review_Movie" FromRole="Review" ToRole="Movie" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="WaitingList">
+          <Key>
+            <PropertyRef Name="MemberID" />
+            <PropertyRef Name="MovieID" />
+          </Key>
+          <Property Name="MemberID" Type="Int32" Nullable="false" />
+          <Property Name="MovieID" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="WaitDate" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="Member" Relationship="VideoLibProjectV01Model.FK_WaitingList_Member" FromRole="WaitingList" ToRole="Member" />
+          <NavigationProperty Name="Movie" Relationship="VideoLibProjectV01Model.FK_WaitingList_Movie" FromRole="WaitingList" ToRole="Movie" />
+        </EntityType>
+        <Association Name="FK_Actor_Country">
+          <End Role="Country" Type="VideoLibProjectV01Model.Country" Multiplicity="0..1" />
+          <End Role="Actor" Type="VideoLibProjectV01Model.Actor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="CountryID" />
+            </Principal>
+            <Dependent Role="Actor">
+              <PropertyRef Name="CountryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Movie_Country">
+          <End Role="Country" Type="VideoLibProjectV01Model.Country" Multiplicity="1" />
+          <End Role="Movie" Type="VideoLibProjectV01Model.Movie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="CountryID" />
+            </Principal>
+            <Dependent Role="Movie">
+              <PropertyRef Name="CountryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rent_Member">
+          <End Role="Member" Type="VideoLibProjectV01Model.Member" Multiplicity="1" />
+          <End Role="Rent" Type="VideoLibProjectV01Model.Rent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="MemberID" />
+            </Principal>
+            <Dependent Role="Rent">
+              <PropertyRef Name="MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Review_Member">
+          <End Role="Member" Type="VideoLibProjectV01Model.Member" Multiplicity="1" />
+          <End Role="Review" Type="VideoLibProjectV01Model.Review" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="MemberID" />
+            </Principal>
+            <Dependent Role="Review">
+              <PropertyRef Name="MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WaitingList_Member">
+          <End Role="Member" Type="VideoLibProjectV01Model.Member" Multiplicity="1" />
+          <End Role="WaitingList" Type="VideoLibProjectV01Model.WaitingList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="MemberID" />
+            </Principal>
+            <Dependent Role="WaitingList">
+              <PropertyRef Name="MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Movie_MovieType">
+          <End Role="MovieType" Type="VideoLibProjectV01Model.MovieType" Multiplicity="1" />
+          <End Role="Movie" Type="VideoLibProjectV01Model.Movie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MovieType">
+              <PropertyRef Name="MovieTypeID" />
+            </Principal>
+            <Dependent Role="Movie">
+              <PropertyRef Name="MovieTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rent_Movie">
+          <End Role="Movie" Type="VideoLibProjectV01Model.Movie" Multiplicity="1" />
+          <End Role="Rent" Type="VideoLibProjectV01Model.Rent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Movie">
+              <PropertyRef Name="MovieID" />
+            </Principal>
+            <Dependent Role="Rent">
+              <PropertyRef Name="MovieID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Review_Movie">
+          <End Role="Movie" Type="VideoLibProjectV01Model.Movie" Multiplicity="1" />
+          <End Role="Review" Type="VideoLibProjectV01Model.Review" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Movie">
+              <PropertyRef Name="MovieID" />
+            </Principal>
+            <Dependent Role="Review">
+              <PropertyRef Name="MovieID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WaitingList_Movie">
+          <End Role="Movie" Type="VideoLibProjectV01Model.Movie" Multiplicity="1" />
+          <End Role="WaitingList" Type="VideoLibProjectV01Model.WaitingList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Movie">
+              <PropertyRef Name="MovieID" />
+            </Principal>
+            <Dependent Role="WaitingList">
+              <PropertyRef Name="MovieID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ActorMovie">
+          <End Role="Actor" Type="VideoLibProjectV01Model.Actor" Multiplicity="*" />
+          <End Role="Movie" Type="VideoLibProjectV01Model.Movie" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="VideoLibProjectV01ModelStoreContainer" CdmEntityContainer="VideoLibProjectV01Entities">
+          <EntitySetMapping Name="Actors"><EntityTypeMapping TypeName="VideoLibProjectV01Model.Actor"><MappingFragment StoreEntitySet="Actor">
+            <ScalarProperty Name="ActorID" ColumnName="ActorID" />
+            <ScalarProperty Name="ActorName" ColumnName="ActorName" />
+            <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+            <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Countries"><EntityTypeMapping TypeName="VideoLibProjectV01Model.Country"><MappingFragment StoreEntitySet="Country">
+            <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+            <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Members"><EntityTypeMapping TypeName="VideoLibProjectV01Model.Member"><MappingFragment StoreEntitySet="Member">
+            <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+            <ScalarProperty Name="MemberLevel" ColumnName="MemberLevel" />
+            <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+            <ScalarProperty Name="LastName" ColumnName="LastName" />
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+            <ScalarProperty Name="Street" ColumnName="Street" />
+            <ScalarProperty Name="City" ColumnName="City" />
+            <ScalarProperty Name="HouseNumber" ColumnName="HouseNumber" />
+            <ScalarProperty Name="HomePhone" ColumnName="HomePhone" />
+            <ScalarProperty Name="MobilePhone" ColumnName="MobilePhone" />
+            <ScalarProperty Name="Email" ColumnName="Email" />
+            <ScalarProperty Name="Password" ColumnName="Password" />
+            <ScalarProperty Name="DaysBalance" ColumnName="DaysBalance" />
+            <ScalarProperty Name="MemberSince" ColumnName="MemberSince" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Movies"><EntityTypeMapping TypeName="VideoLibProjectV01Model.Movie"><MappingFragment StoreEntitySet="Movie">
+            <ScalarProperty Name="MovieID" ColumnName="MovieID" />
+            <ScalarProperty Name="MovieName" ColumnName="MovieName" />
+            <ScalarProperty Name="MovieTypeID" ColumnName="MovieTypeID" />
+            <ScalarProperty Name="Copies" ColumnName="Copies" />
+            <ScalarProperty Name="Summary" ColumnName="Summary" />
+            <ScalarProperty Name="Year" ColumnName="Year" />
+            <ScalarProperty Name="Lenght" ColumnName="Lenght" />
+            <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+            <ScalarProperty Name="MoviePicUrl" ColumnName="MoviePicUrl" />
+            <ScalarProperty Name="TrailerUrl" ColumnName="TrailerUrl" />
+            <ScalarProperty Name="Active" ColumnName="Active" />
+            <ScalarProperty Name="DateAdded" ColumnName="DateAdded" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="MovieTypes"><EntityTypeMapping TypeName="VideoLibProjectV01Model.MovieType"><MappingFragment StoreEntitySet="MovieType">
+            <ScalarProperty Name="MovieTypeID" ColumnName="MovieTypeID" />
+            <ScalarProperty Name="MovieTypeName" ColumnName="MovieTypeName" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="populars"><EntityTypeMapping TypeName="VideoLibProjectV01Model.popular"><MappingFragment StoreEntitySet="popular">
+            <ScalarProperty Name="MovieID" ColumnName="MovieID" />
+            <ScalarProperty Name="movieCount" ColumnName="movieCount" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Rents"><EntityTypeMapping TypeName="VideoLibProjectV01Model.Rent"><MappingFragment StoreEntitySet="Rent">
+            <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+            <ScalarProperty Name="MovieID" ColumnName="MovieID" />
+            <ScalarProperty Name="RentStart" ColumnName="RentStart" />
+            <ScalarProperty Name="RentEnd" ColumnName="RentEnd" />
+            <ScalarProperty Name="RentDays" ColumnName="RentDays" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Reviews"><EntityTypeMapping TypeName="VideoLibProjectV01Model.Review"><MappingFragment StoreEntitySet="Review">
+            <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+            <ScalarProperty Name="MovieID" ColumnName="MovieID" />
+            <ScalarProperty Name="ReviewText" ColumnName="ReviewText" />
+            <ScalarProperty Name="Rate" ColumnName="Rate" />
+            <ScalarProperty Name="ReviewDate" ColumnName="ReviewDate" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams"><EntityTypeMapping TypeName="VideoLibProjectV01Model.sysdiagram"><MappingFragment StoreEntitySet="sysdiagrams">
+            <ScalarProperty Name="name" ColumnName="name" />
+            <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+            <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+            <ScalarProperty Name="version" ColumnName="version" />
+            <ScalarProperty Name="definition" ColumnName="definition" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="WaitingLists"><EntityTypeMapping TypeName="VideoLibProjectV01Model.WaitingList"><MappingFragment StoreEntitySet="WaitingList">
+            <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+            <ScalarProperty Name="MovieID" ColumnName="MovieID" />
+            <ScalarProperty Name="WaitDate" ColumnName="WaitDate" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <AssociationSetMapping Name="ActorMovie" TypeName="VideoLibProjectV01Model.ActorMovie" StoreEntitySet="ActorMovie">
+            <EndProperty Name="Actor">
+              <ScalarProperty Name="ActorID" ColumnName="ActorID" />
+            </EndProperty>
+            <EndProperty Name="Movie">
+              <ScalarProperty Name="MovieID" ColumnName="MovieID" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Model">
+        <EntityTypeShape EntityType="VideoLibProjectV01Model.Actor" Width="1.5" PointX="3" PointY="4.25" Height="2.1725878906249996" IsExpanded="true" />
+        <EntityTypeShape EntityType="VideoLibProjectV01Model.Country" Width="1.5" PointX="0.75" PointY="4.5" Height="1.7879850260416657" IsExpanded="true" />
+        <EntityTypeShape EntityType="VideoLibProjectV01Model.Member" Width="1.5" PointX="5.25" PointY="8.625" Height="4.480205078125" IsExpanded="true" />
+        <EntityTypeShape EntityType="VideoLibProjectV01Model.Movie" Width="1.5" PointX="5.25" PointY="3.125" Height="4.480205078125" IsExpanded="true" />
+        <EntityTypeShape EntityType="VideoLibProjectV01Model.MovieType" Width="1.5" PointX="3" PointY="1.5" Height="1.5956835937499996" IsExpanded="true" />
+        <EntityTypeShape EntityType="VideoLibProjectV01Model.popular" Width="1.5" PointX="0.75" PointY="7.75" Height="1.4033821614583317" IsExpanded="true" />
+        <EntityTypeShape EntityType="VideoLibProjectV01Model.Rent" Width="1.5" PointX="7.5" PointY="4.125" Height="2.3648893229166674" IsExpanded="true" />
+        <EntityTypeShape EntityType="VideoLibProjectV01Model.Review" Width="1.5" PointX="10.5" PointY="4.125" Height="2.3648893229166674" IsExpanded="true" />
+        <EntityTypeShape EntityType="VideoLibProjectV01Model.sysdiagram" Width="1.5" PointX="7.75" PointY="7.75" Height="1.9802864583333317" IsExpanded="true" />
+        <EntityTypeShape EntityType="VideoLibProjectV01Model.WaitingList" Width="1.5" PointX="7.5" PointY="1.375" Height="1.9802864583333317" IsExpanded="true" />
+        <AssociationConnector Association="VideoLibProjectV01Model.FK_Actor_Country" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="5.3939925130208328" />
+          <ConnectorPoint PointX="3" PointY="5.3939925130208328" />
+        </AssociationConnector>
+        <AssociationConnector Association="VideoLibProjectV01Model.FK_Movie_Country" ManuallyRouted="false">
+          <ConnectorPoint PointX="1.5" PointY="6.2879850260416656" />
+          <ConnectorPoint PointX="1.5" PointY="7.045146484375" />
+          <ConnectorPoint PointX="5.25" PointY="7.045146484375" />
+        </AssociationConnector>
+        <AssociationConnector Association="VideoLibProjectV01Model.FK_Rent_Member" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.75" PointY="11.448995768229166" />
+          <ConnectorPoint PointX="7.59375" PointY="11.448995768229166" />
+          <ConnectorPoint PointX="7.59375" PointY="6.4898893229166674" />
+        </AssociationConnector>
+        <AssociationConnector Association="VideoLibProjectV01Model.FK_Review_Member" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.75" PointY="10.589638613281249" />
+          <ConnectorPoint PointX="7.510416666666667" PointY="10.589638613281249" />
+          <ConnectorPoint PointX="7.677083333333333" PointY="10.589638613281249" />
+          <ConnectorPoint PointX="11.25" PointY="10.589638613281249" />
+          <ConnectorPoint PointX="11.25" PointY="6.4898893229166674" />
+        </AssociationConnector>
+        <AssociationConnector Association="VideoLibProjectV01Model.FK_WaitingList_Member" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.75" PointY="8.6261528461538468" />
+          <ConnectorPoint PointX="7.125" PointY="8.2511528461538468" />
+          <ConnectorPoint PointX="7.125" PointY="2.3651432291666659" />
+          <ConnectorPoint PointX="7.5" PointY="2.3651432291666659" />
+        </AssociationConnector>
+        <AssociationConnector Association="VideoLibProjectV01Model.FK_Movie_MovieType" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="2.297841796875" />
+          <ConnectorPoint PointX="6" PointY="2.297841796875" />
+          <ConnectorPoint PointX="6" PointY="3.125" />
+        </AssociationConnector>
+        <AssociationConnector Association="VideoLibProjectV01Model.FK_Rent_Movie" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.75" PointY="5.3074446614583337" />
+          <ConnectorPoint PointX="7.041666666666667" PointY="5.3074446614583328" />
+          <ConnectorPoint PointX="7.208333333333333" PointY="5.3074446614583337" />
+          <ConnectorPoint PointX="7.5" PointY="5.3074446614583337" />
+        </AssociationConnector>
+        <AssociationConnector Association="VideoLibProjectV01Model.FK_Review_Movie" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.75" PointY="7.0787997005208343" />
+          <ConnectorPoint PointX="7.041666666666667" PointY="7.0787997005208334" />
+          <ConnectorPoint PointX="7.208333333333333" PointY="7.0787997005208343" />
+          <ConnectorPoint PointX="7.510416666666667" PointY="7.0787997005208334" />
+          <ConnectorPoint PointX="7.677083333333333" PointY="7.0787997005208343" />
+          <ConnectorPoint PointX="10.8437475" PointY="7.0787997005208343" />
+          <ConnectorPoint PointX="10.8437475" PointY="6.4898893229166674" />
+        </AssociationConnector>
+        <AssociationConnector Association="VideoLibProjectV01Model.FK_WaitingList_Movie" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.4062525" PointY="3.125" />
+          <ConnectorPoint PointX="6.4062525" PointY="1.8364208984375" />
+          <ConnectorPoint PointX="7.5" PointY="1.8364208984375" />
+        </AssociationConnector>
+        <AssociationConnector Association="VideoLibProjectV01Model.ActorMovie" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="5.3362939453125" />
+          <ConnectorPoint PointX="5.25" PointY="5.3362939453125" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>
